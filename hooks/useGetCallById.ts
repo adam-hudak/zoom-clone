@@ -15,7 +15,6 @@ export const useGetCallById = (id: string | string[]) => {
         filter_conditions: { id },
       });
 
-      console.log("calls useGetCallById", calls, calls[0]);
       if (calls.length) {
         setCall(calls[0]);
       }
