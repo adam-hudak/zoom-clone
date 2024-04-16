@@ -16,6 +16,10 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const router = useRouter();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
   const { toast } = useToast();
+  const [isLoadingRecordings, setIsLoadingRecordings] = useState(
+    type === "recordings"
+  );
+
   const getCalls = () => {
     switch (type) {
       case "ended":
@@ -43,6 +47,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
 
   useEffect(() => {
     const fetchRecordings = async () => {
+      setIsLoadingRecordings(true);
       try {
         const callData = await Promise.all(
           callRecordings.map((meeting) => meeting.queryRecordings())
@@ -55,6 +60,8 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
         setRecordings(recordings);
       } catch (error) {
         toast({ title: "Try again later" });
+      } finally {
+        setIsLoadingRecordings(false);
       }
     };
 
@@ -64,7 +71,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const calls = getCalls();
   const noCallsMessage = getNoCallsMessage();
 
-  if (isLoading) return <Loader />;
+  if (isLoading || isLoadingRecordings) return <Loader />;
 
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
@@ -73,9 +80,9 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
           <MeetingCard
             key={id}
             title={
-              (meeting as Call).state?.custom.description.substring(0, 25) ||
-              meeting.filename.substring(0, 25) ||
-              "No description"
+              (meeting as Call).state?.custom?.description?.substring(0, 25) ||
+              meeting?.filename?.substring(0, 25) ||
+              "Personal meeting"
             }
             date={
               (meeting as Call).state?.startsAt?.toLocaleString() ||
