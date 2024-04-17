@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <img src="https://github.com/ansulagrawal/zoom-clone/assets/55939700/4c81e4d3-16d9-4392-9c42-9f2920d0867d" alt="Project Banner">
+  <img src="https://repository-images.githubusercontent.com/784966748/41b385e6-6aa0-4314-959c-4de558e76ee5" alt="Project Banner">
 
   <br />
 
