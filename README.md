@@ -74,7 +74,7 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/ansulagrawal/zoom-clone.git
+git clone https://github.com/adam-hudak/zoom-clone.git
 cd zoom-clone
 ```
 
