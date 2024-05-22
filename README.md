@@ -17,7 +17,7 @@
 
 ## <a name="demo">🚨 Demo</a>
 
-<a href="https://figma-clone-five-zeta.vercel.app" target="_blank">DEMO</a>
+<a href="https://zoom-clone-pied.vercel.app" target="_blank">DEMO</a>
 
 ## <a name="introduction">🤖 Introduction</a>
 
